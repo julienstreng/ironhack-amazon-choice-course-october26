@@ -5,6 +5,8 @@ const weatherFetch = fetch("https://api.open-meteo.com/v1/forecast?latitude=52.5
     return response.json();
   })
   .then((data) => {
-    console.log("Parsed response: ", data);
+    console.log("Parsed response: ", data.current_weather.temperature);
+    document.querySelector("h1").innerText = "Weather: " + data.current_weather.temperature+ "°C";
+    return data.current_weather.temperature;
   })
   .catch((err) => console.log(err));
